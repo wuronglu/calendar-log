@@ -1,19 +1,15 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import CalendarComponent from './pages/CalendarComponent';
-const App = () => {
-  const [selectDate, setSelectDate] = React.useState(dayjs()); 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Home from './pages/Home';
+
+function App() {
   return (
-    <div>
-      <div className='flex justify-center items-center' >
-       <CalendarComponent selectDate={selectDate} setSelectDate={setSelectDate} />
-      </div>
-      <div>
-        <p>选中的日期是: {selectDate.format('YYYY-MM-DD')}</p>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
