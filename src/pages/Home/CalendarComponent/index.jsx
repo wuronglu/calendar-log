@@ -181,7 +181,7 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 	const getYearLabel = (year) => {
 		const d = Lunar.fromDate(new Date(year + 1, 0));
 		if (isMobile) {
-			return `${d.getYearInChinese()}年`;
+			return `${d.getYear()}`;
 		}
 		return `${d.getYearInChinese()}年（${d.getYearInGanZhi()}${d.getYearShengXiao()}年）`; // 默认显示详细年份
 	};
