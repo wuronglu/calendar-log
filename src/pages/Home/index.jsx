@@ -31,7 +31,9 @@ const Home = () => {
 	return (
 		<div>
 			{contextHolder}
-			<div className="text-4xl text-center p-16">{title}</div>
+			<div className="text-2xl text-center p-16 break-words sm:text-4xl">
+				{title}
+			</div>
 			<div className="flex justify-center items-center">
 				<CalendarComponent
 					selectDate={selectDate}
