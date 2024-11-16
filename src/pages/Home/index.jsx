@@ -34,7 +34,7 @@ const Home = () => {
 			<div className="text-2xl text-center p-16 break-words sm:text-4xl">
 				{title}
 			</div>
-			<div className="flex justify-center items-center">
+			<div className="px-4 flex justify-center items-center sm:px-0 ">
 				<CalendarComponent
 					selectDate={selectDate}
 					setSelectDate={handleDateChange}
