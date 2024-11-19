@@ -4,7 +4,7 @@ import CalendarComponent from "./CalendarComponent";
 import urlMap from "../../config/map";
 import { message } from "antd";
 
-const title = "快乐生活每一天";
+const title = `坚持不懈第 ${Object.keys(urlMap).length} 天`;
 const Home = () => {
 	const [selectDate, setSelectDate] = React.useState(dayjs());
 	const [messageApi, contextHolder] = message.useMessage();
