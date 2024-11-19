@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import { Calendar, Col, Radio, Row, Select } from "antd";
+import { Calendar, Col, Radio, Row, Select, Tour } from "antd";
 import { createStyles } from "antd-style";
 import classNames from "classnames";
 import dayjs from "dayjs";
@@ -94,23 +94,53 @@ const useStyle = createStyles(({ token, css, cx }) => {
 	};
 });
 
+const TOUR_KEY = "calendar_tour_shown";
+
 const CalendarComponent = ({ selectDate, setSelectDate }) => {
 	const { styles } = useStyle();
 	const [panelDate, setPanelDate] = React.useState(dayjs());
 	const [isMobile, setIsMobile] = useState(false);
+	const [openTour, setOpenTour] = useState(false);
+	const todayCellRef = useRef(null);
+
+	const steps = [
+		{
+			title: "选择日期",
+			description:
+				"点击任意日期可以进行选择。日期包含农历和节气信息，周末以红色标注。",
+			target: () => todayCellRef.current,
+			placement: "bottom",
+		},
+	];
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 768); // 判断是否为移动端，768px是一个常见的移动端断点
+			setIsMobile(window.innerWidth <= 768);
 		};
 
 		window.addEventListener("resize", handleResize);
-		handleResize(); // 初始化时调用一次，确定当前屏幕尺寸
+		handleResize();
+
+		// 检查是否是第一次访问
+		const hasShownTour = localStorage.getItem(TOUR_KEY);
+		if (!hasShownTour) {
+			// 设置延迟确保DOM已经渲染完成
+			const timer = setTimeout(() => {
+				setOpenTour(true);
+			}, 500);
+			return () => clearTimeout(timer);
+		}
 
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+
+	// 处理引导关闭
+	const handleTourClose = () => {
+		setOpenTour(false);
+		localStorage.setItem(TOUR_KEY, "true");
+	};
 
 	const onPanelChange = (value, mode) => {
 		console.log(value.format("YYYY-MM-DD"), mode);
@@ -137,12 +167,14 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 			h?.getTarget() === h?.getDay() ? h?.getName() : undefined;
 
 		if (info.type === "date") {
-			return React.cloneElement(info.originNode, {
+			const isToday = date.isSame(dayjs(), "date");
+			const element = React.cloneElement(info.originNode, {
 				...info.originNode.props,
 				className: classNames(styles.dateCell, {
 					[styles.current]: selectDate.isSame(date, "date"),
-					[styles.today]: date.isSame(dayjs(), "date"),
+					[styles.today]: isToday,
 				}),
+				ref: isToday ? todayCellRef : null,
 				children: (
 					<div className={styles.text}>
 						<span
@@ -161,6 +193,7 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 					</div>
 				),
 			});
+			return element;
 		}
 
 		if (info.type === "month") {
@@ -183,7 +216,7 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 		if (isMobile) {
 			return `${d.getYear()}`;
 		}
-		return `${d.getYearInChinese()}年（${d.getYearInGanZhi()}${d.getYearShengXiao()}年）`; // 默认显示详细年份
+		return `${d.getYearInChinese()}年（${d.getYearInGanZhi()}${d.getYearShengXiao()}年）`;
 	};
 
 	const getMonthLabel = (month, value) => {
@@ -267,6 +300,7 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 					);
 				}}
 			/>
+			<Tour open={openTour} onClose={handleTourClose} steps={steps} />
 		</div>
 	);
 };
