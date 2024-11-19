@@ -106,8 +106,7 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 	const steps = [
 		{
 			title: "选择日期",
-			description:
-				"点击任意日期可以进行选择。日期包含农历和节气信息，周末以红色标注。",
+			description: "点击任意日期可以查看当日的学习记录",
 			target: () => todayCellRef.current,
 			placement: "bottom",
 		},
@@ -121,10 +120,8 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 		window.addEventListener("resize", handleResize);
 		handleResize();
 
-		// 检查是否是第一次访问
 		const hasShownTour = localStorage.getItem(TOUR_KEY);
 		if (!hasShownTour) {
-			// 设置延迟确保DOM已经渲染完成
 			const timer = setTimeout(() => {
 				setOpenTour(true);
 			}, 500);
@@ -136,7 +133,6 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 		};
 	}, []);
 
-	// 处理引导关闭
 	const handleTourClose = () => {
 		setOpenTour(false);
 		localStorage.setItem(TOUR_KEY, "true");
