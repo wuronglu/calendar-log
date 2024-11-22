@@ -8,7 +8,7 @@ const BaseBitifulCloudUrl = "https://kotlin.s3.bitiful.net/";
 const Video = () => {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
-	const videoUrl = searchParams.get("video");
+	const videoUrl = searchParams.get("name");
 	return videoUrl ? (
 		<>
 			<Player>
@@ -19,7 +19,7 @@ const Video = () => {
 		<Result
 			status="404"
 			title="404"
-			subTitle="Sorry, the page you visited does not exist."
+			subTitle="Sorry, the page you visited does not exist,please check the url and try again later"
 			extra={
 				<Button type="primary" onClick={() => navigate("/")}>
 					Back Home
