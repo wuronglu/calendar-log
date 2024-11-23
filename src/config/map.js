@@ -6,4 +6,5 @@ export default {
 	"2024-11-20": "https://kdocs.cn/l/ceubYtFQ3Fia",
 	"2024-11-21": "https://kdocs.cn/l/ckWtJHOaLWKn",
 	"2024-11-22": "https://kdocs.cn/l/cl3afE5am8Qt",
+	"2024-11-23": "https://kdocs.cn/l/cjd0wKElXpjb",
 };
