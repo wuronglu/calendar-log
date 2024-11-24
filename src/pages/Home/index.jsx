@@ -15,7 +15,7 @@ const Home = () => {
 		if (!urlMap[formattedDate]) {
 			messageApi.open({
 				type: "info",
-				content: "选中日期暂无日志",
+				content: "选中日期暂无日志，试试昨天的吧～",
 				duration: 1.5,
 			});
 			return;
