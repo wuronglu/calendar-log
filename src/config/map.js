@@ -9,5 +9,5 @@ export default {
 	"2024-11-23": "https://kdocs.cn/l/cjd0wKElXpjb",
 	"2024-11-24": "https://kdocs.cn/l/caB9QjR5vRnv",
 	"2024-11-25":
-		"https://www.yuque.com/wurslu/fcf6kc/ti6y4gctpdzx6ztv?singleDoc# 《2024-11-25》",
+		"https://www.yuque.com/wurslu/fcf6kc/ti6y4gctpdzx6ztv?singleDoc#",
 };
