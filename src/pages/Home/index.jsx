@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import dayjs from "dayjs";
 import CalendarComponent from "./CalendarComponent";
-import { message } from "antd";
+import { message, Flex, Spin, Space } from "antd";
 import fetchMapLinks from "../../api/getMapLinks";
 
 const Home = () => {
@@ -56,11 +56,16 @@ const Home = () => {
 			</div>
 		</div>
 	) : (
-		<div className="my-5 font-sans flex flex-col items-center justify-center pt-10">
-			<h2 className="text-gray-800">网络连接出现问题</h2>
-			<p className="text-gray-600">请检查您的网络连接后重试。</p>
-			<p className="text-gray-600">如果问题仍然存在，请联系网站管理员。</p>
-		</div>
+		<Space
+			size={10}
+			className="flex justify-center items-center pt-16 flex-col"
+		>
+			<Flex align="center" gap="middle">
+				<Spin size="large" />
+			</Flex>
+			<div className="text-4xl">加载中...</div>
+			<div>如果长时间未加载成功，请联系管理员</div>
+		</Space>
 	);
 };
 
