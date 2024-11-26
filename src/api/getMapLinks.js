@@ -1,4 +1,4 @@
-import { BASEURL } from "./base";
+const BASEURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function fetchMapLinks() {
 	return fetch(BASEURL + "/api/v1/map-links")
