@@ -1,7 +1,6 @@
 import "video-react/dist/video-react.css";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Player, BigPlayButton, LoadingSpinner } from "video-react";
-import PropTypes from "prop-types";
 import { Button, Result } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
@@ -50,10 +49,6 @@ const Video = () => {
 			}
 		/>
 	);
-};
-
-Video.propTypes = {
-	videoUrl: PropTypes.string.isRequired,
 };
 
 export default Video;
