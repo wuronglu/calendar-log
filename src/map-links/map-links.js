@@ -12,4 +12,6 @@ export default {
 	"2024-11-26": "https://www.yuque.com/wurslu/fcf6kc/cd68gx6k0g5hn0ei",
 	"2024-11-27": "https://www.yuque.com/wurslu/fcf6kc/gi49vvnr8gx2wge8",
 	"2024-11-28": "https://www.yuque.com/wurslu/fcf6kc/nkqdifwix7y9w4ig",
+	"2024-11-29": "https://www.yuque.com/wurslu/fcf6kc/lfxqqdficggt8ps8",
+	"2024-11-30": "https://www.yuque.com/wurslu/fcf6kc/rynsxs873931wsfd",
 };
