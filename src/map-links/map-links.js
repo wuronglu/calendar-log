@@ -17,4 +17,7 @@ export default {
 	"2024-12-01": "https://www.yuque.com/wurslu/fcf6kc/ett9el9eb5bgbni2",
 	"2024-12-02": "https://www.yuque.com/wurslu/fcf6kc/fk5g41853new6muf",
 	"2024-12-03": "https://www.yuque.com/wurslu/fcf6kc/xks9lkad5v4d9evh",
+	"2024-12-04": "https://www.yuque.com/wurslu/fcf6kc/ghbgvh6m6x3fcfy8",
+	"2024-12-05": "https://www.yuque.com/wurslu/fcf6kc/mw6mkvtpg7cctxxg",
+	"2024-12-06": "https://www.yuque.com/wurslu/fcf6kc/bwq7qi0d5ggy8etb",
 };
