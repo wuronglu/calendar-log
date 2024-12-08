@@ -36,13 +36,13 @@ export default function ReviewCard() {
 	return (
 		<div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 space-y-4">
 			<ReviewItem
-				label="一周前"
-				date={oneWeekAgoDate}
+				label="4 天前"
+				date={fourDaysAgoDate}
 				handleClick={handleWeekClick}
 			/>
 			<ReviewItem
-				label="4 天前"
-				date={fourDaysAgoDate}
+				label="一周前"
+				date={oneWeekAgoDate}
 				handleClick={handleWeekClick}
 			/>
 			<ReviewItem
