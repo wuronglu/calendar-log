@@ -257,42 +257,44 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 					}
 
 					return (
-						<Row justify="end" gutter={8} style={{ padding: 8 }}>
-							<Col>
-								<Select
-									size="small"
-									popupMatchSelectWidth={false}
-									value={year}
-									options={options}
-									onChange={(newYear) => {
-										const now = value.clone().year(newYear);
-										onChange(now);
-									}}
-								/>
-							</Col>
-							<Col>
-								<Select
-									size="small"
-									popupMatchSelectWidth={false}
-									value={month}
-									options={monthOptions}
-									onChange={(newMonth) => {
-										const now = value.clone().month(newMonth);
-										onChange(now);
-									}}
-								/>
-							</Col>
-							<Col>
-								<Radio.Group
-									size="small"
-									onChange={(e) => onTypeChange(e.target.value)}
-									value={type}
-								>
-									<Radio.Button value="month">月</Radio.Button>
-									<Radio.Button value="year">年</Radio.Button>
-								</Radio.Group>
-							</Col>
-						</Row>
+						<div className="px-4">
+							<Row justify="end" gutter={8} style={{ padding: 8 }}>
+								<Col>
+									<Select
+										size="small"
+										popupMatchSelectWidth={false}
+										value={year}
+										options={options}
+										onChange={(newYear) => {
+											const now = value.clone().year(newYear);
+											onChange(now);
+										}}
+									/>
+								</Col>
+								<Col>
+									<Select
+										size="small"
+										popupMatchSelectWidth={false}
+										value={month}
+										options={monthOptions}
+										onChange={(newMonth) => {
+											const now = value.clone().month(newMonth);
+											onChange(now);
+										}}
+									/>
+								</Col>
+								<Col>
+									<Radio.Group
+										size="small"
+										onChange={(e) => onTypeChange(e.target.value)}
+										value={type}
+									>
+										<Radio.Button value="month">月</Radio.Button>
+										<Radio.Button value="year">年</Radio.Button>
+									</Radio.Group>
+								</Col>
+							</Row>
+						</div>
 					);
 				}}
 			/>
