@@ -1,7 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
 import CalendarComponent from "./CalendarComponent";
-import { message, Flex, Spin, Space } from "antd";
+import { message } from "antd";
 import mapLinks from "../../map-links/map-links";
 import ReviewCard from "./ReviewCard";
 
@@ -12,6 +12,7 @@ const Home = () => {
 	const handleDateChange = (newDate) => {
 		setSelectDate(newDate);
 		const formattedDate = newDate.format("YYYY-MM-DD");
+
 		if (!mapLinks[formattedDate]) {
 			messageApi.open({
 				type: "info",
@@ -20,6 +21,7 @@ const Home = () => {
 			});
 			return;
 		}
+
 		window.location = mapLinks[formattedDate];
 		messageApi.open({
 			type: "success",
@@ -28,36 +30,27 @@ const Home = () => {
 		});
 	};
 
-	return Object.keys(mapLinks).length > 0 ? (
-		<>
+	return (
+		<div className="w-full px-2">
 			{contextHolder}
-			<div>
-				<div className="text-2xl text-center p-16 break-words sm:text-4xl">
+			<div className="text-center">
+				<h1 className="text-xl sm:text-2xl font-bold break-words py-8 lg:py-12">
 					{`坚持不懈第 ${Object.keys(mapLinks).length} 天`}
-				</div>
-				<div className="px-4 flex justify-center items-center sm:px-0 flex-col">
-					<CalendarComponent
-						selectDate={selectDate}
-						setSelectDate={handleDateChange}
-					/>
-				</div>
+				</h1>
 			</div>
-			<div className="text-lg pt-8 pb-2 flex justify-center">
-				很久没看以下内容了，复习一下吧
+			<div className="w-full flex justify-center">
+				<CalendarComponent
+					selectDate={selectDate}
+					setSelectDate={handleDateChange}
+				/>
 			</div>
-			<ReviewCard />
-		</>
-	) : (
-		<Space
-			size={10}
-			className="flex justify-center items-center pt-16 flex-col"
-		>
-			<Flex align="center" gap="middle">
-				<Spin size="large" />
-			</Flex>
-			<div className="text-4xl">加载中...</div>
-			<div>如果长时间未加载成功，请联系管理员</div>
-		</Space>
+			<div className="text-center py-4">
+				<h2 className="text-base sm:text-lg">很久没看以下内容了，复习一下吧</h2>
+			</div>
+			<div>
+				<ReviewCard />
+			</div>
+		</div>
 	);
 };
 

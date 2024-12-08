@@ -19,10 +19,12 @@ const useStyle = createStyles(({ token, css, cx }) => {
 	`;
 	return {
 		wrapper: css`
-			width: 450px;
+			width: 100%;
+			max-width: 450px;
+			margin: 0 auto;
 			border: 1px solid ${token.colorBorderSecondary};
 			border-radius: ${token.borderRadiusOuter};
-			padding: 5px;
+			padding: 4px 2px;
 		`,
 		dateCell: css`
 			position: relative;
@@ -257,44 +259,42 @@ const CalendarComponent = ({ selectDate, setSelectDate }) => {
 					}
 
 					return (
-						<div className="px-4">
-							<Row justify="end" gutter={8} style={{ padding: 8 }}>
-								<Col>
-									<Select
-										size="small"
-										popupMatchSelectWidth={false}
-										value={year}
-										options={options}
-										onChange={(newYear) => {
-											const now = value.clone().year(newYear);
-											onChange(now);
-										}}
-									/>
-								</Col>
-								<Col>
-									<Select
-										size="small"
-										popupMatchSelectWidth={false}
-										value={month}
-										options={monthOptions}
-										onChange={(newMonth) => {
-											const now = value.clone().month(newMonth);
-											onChange(now);
-										}}
-									/>
-								</Col>
-								<Col>
-									<Radio.Group
-										size="small"
-										onChange={(e) => onTypeChange(e.target.value)}
-										value={type}
-									>
-										<Radio.Button value="month">月</Radio.Button>
-										<Radio.Button value="year">年</Radio.Button>
-									</Radio.Group>
-								</Col>
-							</Row>
-						</div>
+						<Row justify="end" gutter={8} style={{ padding: 8 }}>
+							<Col>
+								<Select
+									size="small"
+									popupMatchSelectWidth={false}
+									value={year}
+									options={options}
+									onChange={(newYear) => {
+										const now = value.clone().year(newYear);
+										onChange(now);
+									}}
+								/>
+							</Col>
+							<Col>
+								<Select
+									size="small"
+									popupMatchSelectWidth={false}
+									value={month}
+									options={monthOptions}
+									onChange={(newMonth) => {
+										const now = value.clone().month(newMonth);
+										onChange(now);
+									}}
+								/>
+							</Col>
+							<Col>
+								<Radio.Group
+									size="small"
+									onChange={(e) => onTypeChange(e.target.value)}
+									value={type}
+								>
+									<Radio.Button value="month">月</Radio.Button>
+									<Radio.Button value="year">年</Radio.Button>
+								</Radio.Group>
+							</Col>
+						</Row>
 					);
 				}}
 			/>
